@@ -1,0 +1,11 @@
+table {
+    width: 100%;
+    text-align: center;
+  }
+
+  .mat-stroked-button{
+    margin-right: 10px;
+  }
+  .add-member-button{
+    margin-bottom: 20px;
+  }

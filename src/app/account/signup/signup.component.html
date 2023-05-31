@@ -1,0 +1,72 @@
+<div class="signup-form-container">
+  <form
+    [formGroup]="signUpForm"
+    class="signup-form"
+    novalidate
+    (ngSubmit)="signUpUser()"
+  >
+    <mat-form-field class="field-full-width">
+      <input matInput placeholder="Username" formControlName="name" />
+      <mat-error>
+        <span
+          *ngIf="
+            !signUpForm.get('name')?.valid && signUpForm.get('name')?.touched
+          "
+          >Username is required</span
+        >
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="field-full-width">
+      <input
+        type="password"
+        matInput
+        placeholder="password"
+        formControlName="password"
+      />
+      <mat-error>
+        <span
+          *ngIf="
+            !signUpForm.get('password')?.valid &&
+            signUpForm.get('password')?.touched
+          "
+          >Password is required</span
+        >
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="field-full-width">
+      <input
+        type="date"
+        matInput
+        placeholder="Date of Birth"
+        formControlName="dob"
+      />
+      <mat-error>
+        <span
+          *ngIf="
+            !signUpForm.get('dob')?.valid && signUpForm.get('dob')?.touched
+          "
+          >DOB is required</span
+        >
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="field-full-width">
+      <input
+        matInput
+        placeholder="Address is required"
+        formControlName="address"
+      />
+      <mat-error>
+        <span
+          *ngIf="
+            !signUpForm.get('address')?.valid &&
+            signUpForm.get('address')?.touched
+          "
+          >Address is required</span
+        >
+      </mat-error>
+    </mat-form-field>
+    <p>Already have an account? <a routerLink="/login" class="text-primary">Login Here</a></p>
+    <button mat-stroked-button color="primary">Sign Up</button>
+  </form>
+</div>

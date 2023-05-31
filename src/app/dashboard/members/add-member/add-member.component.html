@@ -1,0 +1,48 @@
+<div class="add-form-container">
+    <form [formGroup]="addUserForm" class="add-form" novalidate (ngSubmit)="addUser()">
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Name" formControlName="name" />
+        <mat-error>
+          <span
+            *ngIf="
+              !addUserForm.get('name')?.valid &&
+              addUserForm.get('name')?.touched
+            "
+            >Name is required</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <input
+          type="date"
+          matInput
+          placeholder="Date of Birth"
+          formControlName="dob"
+        />
+        <mat-error>
+          <span
+            *ngIf="
+              !addUserForm.get('dob')?.valid && addUserForm.get('dob')?.touched
+            "
+            >DOB is required</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <input
+          matInput
+          placeholder="Address"
+          formControlName="address"
+        />
+        <mat-error>
+          <span
+            *ngIf="
+              !addUserForm.get('address')?.valid && addUserForm.get('address')?.touched
+            "
+            >Address is required</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <button mat-stroked-button color="primary">Submit</button>
+    </form>
+  </div>

@@ -1,0 +1,19 @@
+.field-full-width{
+    width: 100%;
+}
+.mat-form-field{
+    margin-top:10px;
+}
+.add-form-container{
+    width: 50%;
+    height: 50vh;
+    margin: 20px auto;
+}
+.add-form{
+    text-align: center;
+    vertical-align: middle;
+}
+
+.mat-stroked-button{
+    margin-right: 10px;
+  }
