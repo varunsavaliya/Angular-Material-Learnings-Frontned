@@ -9,7 +9,7 @@ import { UserAuthService } from 'src/app/core/Services/user-auth.service';
 })
 export class HeaderComponent implements OnInit {
   constructor(private userAuthService: UserAuthService, private router: Router) { }
-  userName: string = '';
+  userName: string | null = '';
   user: User | null = this.userAuthService.getUser()
   ngOnInit(): void {
     if (this.user !== null) {

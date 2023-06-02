@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { User } from 'src/app/core/Models/User.model';
 import { GlobalToastrService } from 'src/app/core/Services/global-toastr.service';
-import { AuthService } from 'src/app/core/apiservises/auth.service';
+import { AccountService } from 'src/app/core/apiservises/account.service';
 import { ConfirmModalComponent } from 'src/app/core/components/confirm-modal/confirm-modal.component';
 import { UserAuthService } from 'src/app/core/Services/user-auth.service';
 
@@ -33,13 +33,13 @@ export class SignupComponent implements OnInit {
   }
 
   signUpRequest: User = {
-    username: '',
-    password: '',
+    username: null,
+    password: null,
     userId: 0,
     dob: null,
-    address: '',
+    address: null,
   };
-  constructor(private authService: AuthService, private router: Router, private globalToastr: GlobalToastrService, private dialog: MatDialog, private userAuth: UserAuthService) { }
+  constructor(private accountService: AccountService, private router: Router, private globalToastr: GlobalToastrService, private dialog: MatDialog, private userAuth: UserAuthService) { }
 
   ngOnInit(): void {
   }
@@ -60,20 +60,27 @@ export class SignupComponent implements OnInit {
           this.signUpRequest.password = this.signUpForm.controls.password.value;
           this.signUpRequest.dob = this.signUpForm.controls.dob.value;
           this.signUpRequest.address = this.signUpForm.controls.address.value;
-          console.log(this.signUpRequest)
-          this.authService.signUp(this.signUpRequest).subscribe({
+          this.accountService.signUp(this.signUpRequest).subscribe({
             next: (response) => {
-              const token = response.token;
-              const isLoggedIn = response.response;
-              localStorage.setItem('token', token);
-              localStorage.setItem('user', JSON.stringify(response.userResponseData));
-              if (isLoggedIn) {
-                this.userAuth.setUser(response.userResponseData);
-                this.router.navigate(['dashboard', 'analytics']);
-                this.globalToastr.showToastr('success', 'Sign Up successfull!');
-              } else {
-                this.globalToastr.showToastr('error', 'Error occured while sign up!');
+              if (response.data === null) {
+                this.globalToastr.showToastr('error', response.message);
               }
+              else {
+                const token = response.token;
+                const isLoggedIn = response.success;
+                localStorage.setItem('token', token);
+                localStorage.setItem('user', JSON.stringify(response.data));
+                if (isLoggedIn) {
+                  this.userAuth.setUser(response.data);
+                  this.router.navigate(['dashboard', 'analytics']);
+                  this.globalToastr.showToastr('success', 'Sign Up successfull!');
+                } else {
+                  this.globalToastr.showToastr('error', 'Error occured while sign up!');
+                }
+              }
+            },
+            error: (error) => {
+              this.globalToastr.showToastr('error', error);
             }
           })
         }

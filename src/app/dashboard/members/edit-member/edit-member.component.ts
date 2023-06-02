@@ -45,7 +45,7 @@ export class EditMemberComponent implements OnInit {
     private router: Router,
     private globalToastr: GlobalToastrService,
     private datePipe: DatePipe
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.activeRoute.paramMap.subscribe({
@@ -56,10 +56,10 @@ export class EditMemberComponent implements OnInit {
           this.userService.getUser(id).subscribe({
             next: (response) => {
               this.editUserForm.patchValue({
-                name: response.username,
-                dob: this.datePipe.transform(response.dob, 'yyyy-MM-dd'),
-                address: response.address,
-                userId: response.userId,
+                name: response.data.username,
+                dob: this.datePipe.transform(response.data.dob, 'yyyy-MM-dd'),
+                address: response.data.address,
+                userId: response.data.userId,
               });
             },
           });
@@ -78,9 +78,16 @@ export class EditMemberComponent implements OnInit {
         .updateUser(JSON.stringify(this.userDetails.userId), this.userDetails)
         .subscribe({
           next: (response) => {
-            this.router.navigate(['dashboard','members']);
-            this.globalToastr.showToastr('success', response.username + ' has been updated successfully!');
+            if (response.success) {
+              this.router.navigate(['dashboard', 'members']);
+              this.globalToastr.showToastr('success', response.message);
+            } else {
+              this.globalToastr.showToastr('error', response.message);
+            }
           },
+          error: (error) => {
+            this.globalToastr.showToastr('error', error);
+          }
         });
     }
   }

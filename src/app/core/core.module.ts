@@ -14,7 +14,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { ToastrModule } from 'ngx-toastr';
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 import {MatDialogModule} from '@angular/material/dialog';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 @NgModule({
   declarations: [
     ConfirmModalComponent
@@ -33,6 +34,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatPaginatorModule,
     MatSelectModule,
     MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     ToastrModule.forRoot({
       closeButton: true,
       timeOut: 1500, // 15 seconds
@@ -53,6 +56,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatPaginatorModule,
     MatDialogModule,
     MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     ToastrModule
   ]
 })

@@ -1,9 +1,9 @@
 export class User {
     userId: number;
-    username: string;
+    username: string| null;
     dob: Date | null;
-    address: string;
-    password: string;
+    address: string| null;
+    password: string | null;
   
     constructor(userId: number, username: string, dob: Date, address: string, password: string) {
       this.userId = userId;

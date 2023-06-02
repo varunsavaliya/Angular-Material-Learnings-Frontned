@@ -12,24 +12,24 @@ export class UserService {
   baseApiUrl: string = environment.baseApiUrl;
   constructor(private http: HttpClient) { }
 
-  getAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.baseApiUrl + 'api/Users');
+  getAllUsers(): Observable<any> {
+    return this.http.get<any>(this.baseApiUrl + 'api/Users');
   }
 
-  addUser(addUserRequest: User): Observable<User> {
-    const user = this.http.post<User>(this.baseApiUrl + 'api/Users', addUserRequest);
+  addUser(addUserRequest: User): Observable<any> {
+    const user = this.http.post<any>(this.baseApiUrl + 'api/Users', addUserRequest);
     return user;
   }
 
-  getUser(id: string): Observable<User> {
-    return this.http.get<User>(this.baseApiUrl + 'api/Users/' + id);
+  getUser(id: string): Observable<any> {
+    return this.http.get<any>(this.baseApiUrl + 'api/Users/' + id);
   }
 
-  updateUser(id: string, updateUserRequest: User): Observable<User> {
-    return this.http.put<User>(this.baseApiUrl + 'api/Users/' + id, updateUserRequest);
+  updateUser(id: string, updateUserRequest: User): Observable<any> {
+    return this.http.put<any>(this.baseApiUrl + 'api/Users/' + id, updateUserRequest);
   }
 
-  deleteUser(id: string): Observable<User> {
-    return this.http.delete<User>(this.baseApiUrl + 'api/Users/' + id);
+  deleteUser(id: string): Observable<any> {
+    return this.http.delete<any>(this.baseApiUrl + 'api/Users/' + id);
   }
 }

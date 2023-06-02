@@ -10,9 +10,17 @@ import { GlobalToastrService } from 'src/app/core/Services/global-toastr.service
   styleUrls: ['./add-member.component.css'],
 })
 export class AddMemberComponent implements OnInit {
+  minDate: Date;
+  maxDate: Date;
+  constructor(private userService: UserService, private router: Router, private globalToastr: GlobalToastrService) {
+    const currentYear = new Date().getFullYear();
+    this.minDate = new Date(currentYear - 20, 0, 1);
+    this.maxDate = new Date(currentYear + 1, 11, 31);
+  }
+
   addUserForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
-    dob: new FormControl(new Date()),
+    dob: new FormControl(null, [Validators.required,]),
     address: new FormControl('', [Validators.required]),
   });
 
@@ -22,29 +30,38 @@ export class AddMemberComponent implements OnInit {
   get address() {
     return this.addUserForm.get('address');
   }
+  get dob() {
+    return this.addUserForm.get('dob');
+  }
 
   userCreateRequest: User = {
     userId: 0,
     username: '',
-    dob: new Date(),
+    dob: null,
     address: '',
-    password: '',
+    password: null,
   };
-  constructor(private userService: UserService, private router: Router, private globalToastr: GlobalToastrService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
   addUser() {
     if (this.addUserForm.valid) {
       this.userCreateRequest.username = this.addUserForm.controls.name.value;
       this.userCreateRequest.dob = this.addUserForm.controls.dob.value;
       this.userCreateRequest.address = this.addUserForm.controls.address.value;
-      
-      this.userService.addUser(this.userCreateRequest).subscribe(
-        (createdUser: User) => {
-          this.router.navigate(['dashboard','members']);
-          this.globalToastr.showToastr('success', createdUser.username + ' has been Added successfully!');
+      this.userService.addUser(this.userCreateRequest).subscribe({
+        next: (response) => {
+          if (response.success) {
+            this.router.navigate(['dashboard', 'members']);
+            this.globalToastr.showToastr('success', response.message);
+          }
+          else {
+            this.globalToastr.showToastr('error', response.message);
+          }
+        },
+        error: (error) => {
+          this.globalToastr.showToastr('error', error);
         }
-      );
+      });
     }
   }
 }

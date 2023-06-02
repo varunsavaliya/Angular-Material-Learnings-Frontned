@@ -7,7 +7,7 @@ import { User } from '../Models/User.model';
 export class UserAuthService {
   constructor() {
     const storedUserData = localStorage.getItem('user');
-    if (storedUserData) {
+    if (storedUserData && storedUserData != 'undefined') {
       this.userData = JSON.parse(storedUserData);
     }
   }
@@ -25,7 +25,10 @@ export class UserAuthService {
   }
 
   getUser() {
-    this.userData = JSON.parse(localStorage.getItem('user') || 'null');
+    const storedUserData = localStorage.getItem('user');
+    if (storedUserData && storedUserData != 'undefined') {
+      this.userData = JSON.parse(storedUserData || 'null');
+    }
 
     return this.userData;
   }
