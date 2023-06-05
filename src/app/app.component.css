@@ -1,4 +1,16 @@
-/* for sidenav to take a whole page */
+/* :host ::ng-deep{
+    .mat-stroked-button{
+      margin-right: 10px;
+    }
+    .add-member-button{
+      margin-bottom: 20px;
+    }
+    table {
+        width: 100%;
+        text-align: center;
+      }
+    
+} */
 html, body { 
     margin: 0;
     height: 100%;
@@ -15,3 +27,4 @@ mat-sidenav {
 main {
     padding: 10px;
 }
+

@@ -4,7 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/core/Models/User.model';
 import { GlobalToastrService } from 'src/app/core/Services/global-toastr.service';
-import { UserService } from 'src/app/core/apiservises/user.service';
+import { UserService } from 'src/app/core/apiservices/user.service';
 
 @Component({
   selector: 'app-user-edit',
@@ -70,14 +70,15 @@ export class EditMemberComponent implements OnInit {
 
   editUser() {
     if (this.editUserForm.valid) {
+      
       this.userDetails.username = this.editUserForm.controls.name.value;
       this.userDetails.dob = this.editUserForm.controls.dob.value;
       this.userDetails.address = this.editUserForm.controls.address.value;
       this.userDetails.userId = this.editUserForm.controls.userId.value;
       this.userService
-        .updateUser(JSON.stringify(this.userDetails.userId), this.userDetails)
-        .subscribe({
-          next: (response) => {
+      .updateUser(JSON.stringify(this.userDetails.userId), this.userDetails)
+      .subscribe({
+        next: (response) => {
             if (response.success) {
               this.router.navigate(['dashboard', 'members']);
               this.globalToastr.showToastr('success', response.message);

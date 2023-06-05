@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/core/Models/User.model';
-import { UserService } from 'src/app/core/apiservises/user.service';
+import { UserService } from 'src/app/core/apiservices/user.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { GlobalToastrService } from 'src/app/core/Services/global-toastr.service';
 @Component({

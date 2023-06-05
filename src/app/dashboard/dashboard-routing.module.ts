@@ -8,6 +8,8 @@ import { SmsTemplateComponent } from './sms-template/sms-template.component';
 import { SettingsComponent } from './settings/settings.component';
 import { EditMemberComponent } from './members/edit-member/edit-member.component';
 import { AddMemberComponent } from './members/add-member/add-member.component';
+import { EditTemplateComponent } from './sms-template/edit-template/edit-template.component';
+import { AddTemplateComponent } from './sms-template/add-template/add-template.component';
 
 const routes: Routes = [
   {
@@ -20,6 +22,8 @@ const routes: Routes = [
       { path: 'settings', component: SettingsComponent },
       { path: 'members/editmember/:id', component: EditMemberComponent },
       { path: 'members/addmember', component: AddMemberComponent },
+      { path: 'sms-template/edit-sms-template/:id', component: EditTemplateComponent },
+      { path: 'sms-template/add-sms-template', component: AddTemplateComponent },
     ]
   },
 ];

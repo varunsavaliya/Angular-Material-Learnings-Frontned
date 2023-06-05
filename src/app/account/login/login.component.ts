@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/core/Models/User.model';
 import { GlobalToastrService } from 'src/app/core/Services/global-toastr.service';
-import { AccountService } from 'src/app/core/apiservises/account.service';
+import { AccountService } from 'src/app/core/apiservices/account.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmModalComponent } from 'src/app/core/components/confirm-modal/confirm-modal.component';
 import { UserAuthService } from 'src/app/core/Services/user-auth.service';

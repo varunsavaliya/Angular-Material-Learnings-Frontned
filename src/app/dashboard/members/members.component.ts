@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/core/Models/User.model';
-import { UserService } from '../../core/apiservises/user.service'
+import { UserService } from '../../core/apiservices/user.service'
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';

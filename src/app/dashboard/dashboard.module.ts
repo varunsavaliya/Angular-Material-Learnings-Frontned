@@ -16,6 +16,8 @@ import { CoreModule } from '../core/core.module';
 import { HeaderComponent } from './header/header.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from '../core/Services/auth-interceptor.service';
+import { AddTemplateComponent } from './sms-template/add-template/add-template.component';
+import { EditTemplateComponent } from './sms-template/edit-template/edit-template.component';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -27,6 +29,8 @@ import { AuthInterceptorService } from '../core/Services/auth-interceptor.servic
     AddMemberComponent,
     EditMemberComponent,
     HeaderComponent,
+    AddTemplateComponent,
+    EditTemplateComponent,
   ],
   imports: [
     CommonModule,

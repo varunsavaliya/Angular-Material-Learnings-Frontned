@@ -1,0 +1,30 @@
+<div class="edit-form-container">
+    <form [formGroup]="editSMSTemplateForm" class="edit-form" novalidate (ngSubmit)="editSMSTemplate()">
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Name" formControlName="name" />
+        <mat-error>
+          <span
+            *ngIf="
+              ! editSMSTemplateForm.get('name')?.valid &&
+               editSMSTemplateForm.get('name')?.touched
+            "
+            >Name is required</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Template" formControlName="template" />
+        <mat-error>
+          <span
+            *ngIf="
+              ! editSMSTemplateForm.get('template')?.valid &&
+               editSMSTemplateForm.get('template')?.touched
+            "
+            >Name is required</span
+          >
+        </mat-error>
+      </mat-form-field>
+      
+      <button mat-stroked-button color="primary">Submit</button>
+    </form>
+  </div>

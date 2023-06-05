@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { User } from 'src/app/core/Models/User.model';
 import { GlobalToastrService } from 'src/app/core/Services/global-toastr.service';
-import { AccountService } from 'src/app/core/apiservises/account.service';
+import { AccountService } from 'src/app/core/apiservices/account.service';
 import { ConfirmModalComponent } from 'src/app/core/components/confirm-modal/confirm-modal.component';
 import { UserAuthService } from 'src/app/core/Services/user-auth.service';
 
@@ -14,6 +14,9 @@ import { UserAuthService } from 'src/app/core/Services/user-auth.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  minDate: Date;
+  maxDate: Date;
+
 
   signUpForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -39,7 +42,12 @@ export class SignupComponent implements OnInit {
     dob: null,
     address: null,
   };
-  constructor(private accountService: AccountService, private router: Router, private globalToastr: GlobalToastrService, private dialog: MatDialog, private userAuth: UserAuthService) { }
+  constructor(private accountService: AccountService, private router: Router, private globalToastr: GlobalToastrService, private dialog: MatDialog, private userAuth: UserAuthService) { 
+    const currentYear = new Date().getFullYear();
+    this.minDate = new Date(currentYear - 20, 0, 1);
+    this.maxDate = new Date();
+  }
+
 
   ngOnInit(): void {
   }
