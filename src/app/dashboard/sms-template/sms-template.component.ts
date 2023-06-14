@@ -40,3 +40,64 @@ export class SmsTemplateComponent implements OnInit {
   }
 
 }
+
+
+
+
+
+// import { Injectable } from '@angular/core';
+// import { Category } from './category.model';
+
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class CategoryService {
+
+//   constructor() {}
+
+//   list(): Category[] {
+//     return this.categoryDetails;
+//   }
+
+//  categoryDetails: any[] = [
+//     {
+//       id: 1, code: 11, name: 'Furniture', isActive: true  
+//     },
+//     {
+//       id: 2, code: 12, name: 'Food', isActive: false  
+//     },
+//     {
+//       id: 3, code: 13, name: 'Auto Mobile', isActive: true  
+//     },
+//     {
+//       id: 4, code: 14, name: 'Entertainment', isActive: false  
+//     },
+//     {
+//       id: 5, code: 15, name: 'Sports', isActive: false  
+//     },    
+//     {
+//       id: 6, code: 16, name: 'Books', isActive: true  
+//     },
+//     {
+//       id: 7, code: 17, name: 'Education', isActive: false  
+//     },
+//     {
+//       id: 8, code: 18, name: 'Shoes', isActive: true  
+//     },
+//     {
+//       id: 9, code: 19, name: 'Clothes', isActive: false  
+//     }
+//   ]
+
+//   public getCategoriesName():  string[]{
+//     const categoryNames: string[] = [];
+//      for (let index = 0; index < this.categoryDetails.length; index++) {
+//       const name = this.categoryDetails[index].name;
+//       categoryNames.push(name);
+//      }
+
+//      return categoryNames;
+//   }
+    
+  
+// }
